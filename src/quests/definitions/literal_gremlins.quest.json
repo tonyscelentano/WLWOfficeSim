@@ -1,0 +1,122 @@
+{
+  "quest_id": "literal_gremlins",
+  "title": "Literal Gremlins",
+  "version": 1,
+  "status": "enabled",
+  "entrypoints": [
+    {
+      "type": "social",
+      "npc_id": "jason_it",
+      "triggers": ["help", "task", "gremlin", "busy", "bug"],
+      "allow_empty_forced_offer": true
+    }
+  ],
+  "initial_stage": "stabilize_racks",
+  "start_result": {
+    "outcome": "success",
+    "flavor": "Jason points a shaking finger at the cable tray. 'They're eating the fiber and swinging from the patch panel. Keep the network alive without turning this into a procurement request. What's the plan?'",
+    "scene": "SCENE_GREMLINS"
+  },
+  "stages": {
+    "stabilize_racks": {
+      "order": 1,
+      "prompt_stage": 1,
+      "briefing": "Jason points at the cable tray. 'They're eating the fiber and swinging from the patch panel. Keep the network alive without turning this into a procurement request. What's the plan?'",
+      "objective": "Protect the fiber cables, preserve network connectivity, and contain the gremlins without shutting everything down.",
+      "success_cues": ["cable", "network", "fiber", "protect", "reroute", "shield"],
+      "failure_cues": ["ignore", "panic", "meeting", "wait"],
+      "success_flavor": "Jason watches the reroute hold while a gremlin bonks into a shielded cable sleeve. 'Good. The network is ugly, but alive.'",
+      "failure_flavor": "A gremlin flosses with fiber while Jason makes a noise usually reserved for dying printers. 'That did not stabilize anything.'",
+      "coaching": "Quick! Stabilize the switch stack and keep those cables alive.",
+      "next_stage": "purge_crypto_miners"
+    },
+    "purge_crypto_miners": {
+      "order": 2,
+      "prompt_stage": 2,
+      "briefing": "Jason kicks a beige tower with one shoe. 'They've got the old 386 boxes mining crypto and the racks are cooking. Isolate the bad machines, kill the jobs, keep production breathing. What do you do?'",
+      "objective": "Find and stop the crypto-mining processes, isolate affected machines, and reduce server load before heat becomes damage.",
+      "success_cues": ["crypto", "mining", "process", "kill", "386", "resource", "throttle", "ssh", "tunnel", "access", "quarantine", "isolate", "segmentation"],
+      "failure_cues": ["reboot everything", "ignore", "buy", "meeting"],
+      "success_flavor": "The mining jobs die one by one. A gremlin hisses at the process list like it owes him money. Jason nods once.",
+      "failure_flavor": "The fans spin harder and a gremlin starts pricing GPUs on company Wi-Fi. Jason does not look comforted.",
+      "coaching": "Good. Now purge the mining jobs before the racks start screaming again.",
+      "next_stage": "evict_manager"
+    },
+    "evict_manager": {
+      "order": 3,
+      "prompt_stage": 3,
+      "briefing": "A gremlin in a tiny lanyard starts demanding a full reboot, a steering committee, and root access. Jason whispers, 'That's their manager. Get them out of infrastructure before they approve the fire.'",
+      "objective": "Stop the Gremlin Manager from overriding the technical fix and redirect them away from infrastructure.",
+      "success_cues": ["manager", "relocate", "marketing", "evict", "escalate", "bottleneck", "agile", "sdlc", "jira", "ticket", "calendar"],
+      "failure_cues": ["root access", "full reboot", "approve", "committee"],
+      "success_flavor": "The lanyarded gremlin accepts a fake stakeholder calendar invite and marches toward Marketing. Jason finally breathes.",
+      "failure_flavor": "The Gremlin Manager opens a change request titled 'Emergency Synergy Reboot' and somehow gets two approvals.",
+      "coaching": "Perfect. Get the Gremlin Manager out of infrastructure and into Marketing.",
+      "next_stage": "completed"
+    }
+  },
+  "completion": {
+    "success_min_score": 2,
+    "legendary_min_score": 3,
+    "active_scene": "SCENE_GREMLINS",
+    "success_scene": "SCENE_IT_BASEMENT",
+    "failure_scene": "SCENE_RACKS_ON_FIRE"
+  },
+  "rewards": {
+    "failure": {
+      "relationship": {
+        "jason_it": {
+          "trust": -10,
+          "rivalry": 10
+        }
+      },
+      "stats": {
+        "reputation": -5,
+        "stress": 12
+      },
+      "skill_deltas": {},
+      "unlocks": [],
+      "flags": {},
+      "flavor_append": "\n\nThe server rack finally gives up and blooms into expensive smoke. Jason points at the exit without looking away from the flames. 'Go. I need to lie to Finance in peace.'"
+    },
+    "success": {
+      "relationship": {
+        "jason_it": {
+          "trust": 15,
+          "rivalry": 0
+        }
+      },
+      "stats": {
+        "reputation": 5,
+        "xp": 50
+      },
+      "skill_deltas": {
+        "engineering": 2
+      },
+      "unlocks": [],
+      "flags": {},
+      "flavor_append": "\n\nJason sighs, looking at the half-chewed cables. 'Well, they're mostly gone. I'll have to solder the rest myself. Thanks for the... effort, I guess. Back to the ticket queue for you.'"
+    },
+    "legendary": {
+      "min_score": 3,
+      "relationship": {
+        "jason_it": {
+          "trust": 40,
+          "rivalry": -15
+        }
+      },
+      "stats": {
+        "reputation": 20,
+        "xp": 150
+      },
+      "skill_deltas": {
+        "engineering": 3
+      },
+      "unlocks": ["cto_badge"],
+      "flags": {
+        "cto_badge_unlocked": true
+      },
+      "flavor_append": "\n\nJason stares at the quiet racks in awe. 'They're gone. Actually gone. Listen... you've got real low-level grit. If you want to meet the CTO, you'll need more than a guest pass. Take this—it's a Modified Admin Badge. Don't tell HR.'"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox Zero - Email Triage</title>
+    <link rel="stylesheet" href="/minigames/_shared/minigame.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body class="minigame-body">
+    <div id="game-container">
+        <div id="header">
+            <h1>INBOX ZERO</h1>
+            <div id="stats">
+                <span class="stat">TRIAGED: <span id="count">0</span>/20</span>
+                <span class="stat">STRESS: <span id="stress">0</span>%</span>
+            </div>
+        </div>
+
+        <div id="card-stage">
+            <div id="email-card" class="card">
+                <div class="card-header">
+                    <span id="sender">From: HR</span>
+                    <span id="subject">Subject: Mandatory Fun</span>
+                </div>
+                <div id="body" class="card-body">
+                    Please find attached the schedule for the mandatory team-building retreat...
+                </div>
+            </div>
+        </div>
+
+        <div id="actions">
+            <button class="action-btn delete" onclick="triage('delete')">DELETE (A)</button>
+            <button class="action-btn archive" onclick="triage('archive')">ARCHIVE (S)</button>
+            <button class="action-btn forward" onclick="triage('forward')">DELEGATE (D)</button>
+        </div>
+
+        <div id="overlay" class="hidden">
+            <div id="overlay-content">
+                <h2 id="overlay-title">INBOX OVERLOAD</h2>
+                <p id="overlay-subtitle">Click to start</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/minigames/_shared/minigame.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

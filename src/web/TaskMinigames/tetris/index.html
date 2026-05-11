@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris - Project Pile-up</title>
+    <link rel="stylesheet" href="/minigames/_shared/minigame.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body class="minigame-body">
+    <div id="game-container">
+        <div id="sidebar">
+            <div class="stat-box">
+                <label>TASK</label>
+                <div id="task-name">Initializing...</div>
+            </div>
+            <div class="stat-box">
+                <label>LINES</label>
+                <div id="lines">0</div>
+            </div>
+            <div class="stat-box">
+                <label>SCORE</label>
+                <div id="score">0</div>
+            </div>
+            <div id="next-piece-container">
+                <label>NEXT TASK</label>
+                <canvas id="next-canvas" width="80" height="80"></canvas>
+            </div>
+            <div class="controls-hint">
+                <p>← → : Move</p>
+                <p>↑ : Rotate</p>
+                <p>↓ : Drop</p>
+                <p>SPACE : Hard Drop</p>
+            </div>
+        </div>
+        <div id="board-container">
+            <canvas id="game-canvas" width="300" height="600"></canvas>
+            <div id="overlay" class="hidden">
+                <div id="overlay-content">
+                    <h2 id="overlay-title">GAME OVER</h2>
+                    <p id="overlay-subtitle">Press any key to start</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/minigames/_shared/minigame.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

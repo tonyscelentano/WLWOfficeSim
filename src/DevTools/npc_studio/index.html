@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OfficeSim NPC Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>NPC Studio</h1>
+        <button id="btnSave" class="primary">Save Changes</button>
+    </header>
+    
+    <div class="container">
+        <!-- Sidebar: NPC List -->
+        <aside class="roster-panel">
+            <div class="roster-header">
+                <h2>Roster</h2>
+                <button id="btnNewNpc">+ New</button>
+            </div>
+            <ul id="npcList" class="npc-list">
+                <!-- Populated via JS -->
+            </ul>
+        </aside>
+
+        <!-- Main Content: Editor -->
+        <main class="editor-panel">
+            <div id="editorContent" class="hidden">
+                <div class="editor-section">
+                    <h3>Identity</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>ID (internal)</label>
+                            <input type="text" id="inId">
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" id="inName">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Role</label>
+                            <input type="text" id="inRole">
+                        </div>
+                        <div class="form-group">
+                            <label>Department</label>
+                            <select id="inDept"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="inDesc" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="editor-section">
+                    <h3>Game Stats</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Reports To</label>
+                            <input type="text" id="inReportsTo">
+                        </div>
+                        <div class="form-group">
+                            <label>Archetype</label>
+                            <select id="inArchetype">
+                                <option value="operator">Operator</option>
+                                <option value="chaotic_genius">Chaotic Genius</option>
+                                <option value="political">Political</option>
+                                <option value="visionary">Visionary</option>
+                                <option value="gossip">Gossip</option>
+                                <option value="mentor">Mentor</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Pillar</label>
+                            <select id="selPillar">
+                                <option value="technical">Technical</option>
+                                <option value="finance">Finance</option>
+                                <option value="fulfillment">Fulfillment</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Path</label>
+                            <select id="selPath">
+                                <option value="left">Left (Aggressive)</option>
+                                <option value="middle">Middle (Balanced)</option>
+                                <option value="right">Right (Passive)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Cluster</label>
+                            <select id="inCluster"></select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ambition (0-10)</label>
+                            <input type="number" id="inAmbition" min="0" max="10">
+                        </div>
+                        <div class="form-group">
+                            <label>Base Trust (0-100)</label>
+                            <input type="number" id="inBaseTrust" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Base Rivalry (0-100)</label>
+                            <input type="number" id="inBaseRivalry" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Influence Wt (0-10)</label>
+                            <input type="number" id="inInfluenceWeight" min="0" max="10">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Influence Scope (comma-separated)</label>
+                            <input type="text" id="inInfluenceScope">
+                        </div>
+                        <div class="form-group">
+                            <label>Access Tags (comma-separated)</label>
+                            <input type="text" id="inAccessTags">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Communication Style</label>
+                            <input type="text" id="inCommStyle">
+                        </div>
+                        <div class="form-group">
+                            <label>Social Currency</label>
+                            <input type="text" id="inSocialCurrency">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="editor-section">
+                    <h3>Visuals</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Watercooler Scene</label>
+                            <select id="selScene"></select>
+                            <div class="image-preview" id="scenePreview"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Network PFP</label>
+                            <select id="selPfp"></select>
+                            <div class="image-preview" id="pfpPreview"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Watercooler Seed</label>
+                        <textarea id="inWatercoolerSeed" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="editor-section">
+                    <h3>Persona (LLM Prompt)</h3>
+                    <div class="form-group">
+                        <label>Tone</label>
+                        <textarea id="inTone" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Examples (one per line)</label>
+                        <textarea id="inExamples" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="emptyState" class="empty-state">
+                <p>Select an NPC from the roster to edit, or create a new one.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+[[events]]
+id = "product_vision_alignment_jam"
+title = "Vision Alignment Jam"
+type = "meeting_pitch"
+weight = 4
+min_day = 1
+max_day = 9999
+min_stress = 0
+max_stress = 75
+department = "fulfillment.middle.product"
+tags = ["product", "meeting", "pitch", "buzzwords"]
+flavor = "Product asks you to explain how the roadmap unlocks strategic optionality. You say 'north star' twice and nobody calls security."
+
+[events.effects]
+energy_delta = -8
+stress_delta = 5
+rep_delta = 3
+money_delta = 0
+xp_delta = 8
+
+[[events]]
+id = "sales_pipeline_sizzle_reel"
+title = "Pipeline Sizzle Reel"
+type = "meeting_pitch"
+weight = 4
+min_day = 1
+max_day = 9999
+min_stress = 0
+max_stress = 80
+department = "fulfillment.right.sales"
+tags = ["sales", "meeting", "pitch", "client"]
+flavor = "Sales needs a story for a prospect who wants innovation, stability, and a discount. You assemble a pitch deck from adjectives and controlled breathing."
+
+[events.effects]
+energy_delta = -10
+stress_delta = 6
+rep_delta = 4
+money_delta = 100
+xp_delta = 10
+
+[[events]]
+id = "feature_synergy_roundtable"
+title = "Feature Synergy Roundtable"
+type = "meeting_pitch"
+weight = 3
+min_day = 2
+max_day = 9999
+min_stress = 0
+max_stress = 70
+department = "fulfillment.middle.product"
+tags = ["product", "meeting", "strategy", "buzzwords"]
+flavor = "A roundtable forms around whether three unrelated features can become a platform motion. You contribute just enough vocabulary to avoid owning the follow-up."
+
+[events.effects]
+energy_delta = -7
+stress_delta = 4
+rep_delta = 2
+money_delta = 0
+xp_delta = 7
+
+[[events]]
+id = "enterprise_value_story"
+title = "Enterprise Value Story"
+type = "client_pitch"
+weight = 3
+min_day = 2
+max_day = 9999
+min_stress = 0
+max_stress = 85
+department = "fulfillment.right.sales"
+tags = ["sales", "client", "pitch", "revenue"]
+flavor = "A client asks what makes the product enterprise-ready. You describe governance, scalability, and one feature that technically exists in a branch."
+
+[events.effects]
+energy_delta = -12
+stress_delta = 8
+rep_delta = 5
+money_delta = 250
+xp_delta = 12
+
+[[events]]
+id = "roadmap_reprioritization_theater"
+title = "Roadmap Reprioritization Theater"
+type = "meeting_pitch"
+weight = 2
+min_day = 3
+max_day = 9999
+min_stress = 25
+max_stress = 95
+department = "fulfillment.middle.product"
+tags = ["product", "meeting", "roadmap", "politics"]
+flavor = "Everyone agrees the roadmap needs focus, then adds one critical initiative each. You call it portfolio clarity and update the spreadsheet."
+
+[events.effects]
+energy_delta = -12
+stress_delta = 12
+rep_delta = 1
+money_delta = 0
+xp_delta = 10
+
+[[events]]
+id = "sales_engineering_translation_hour"
+title = "Sales Engineering Translation Hour"
+type = "cross_functional_pitch"
+weight = 3
+min_day = 2
+max_day = 9999
+min_stress = 0
+max_stress = 90
+department = "fulfillment.right.sales"
+tags = ["sales", "technical", "client", "meeting", "pitch", "buzzwords"]
+flavor = "Sales asks if the product can 'basically do that.' You translate the answer into something promising enough to sell and narrow enough to survive."
+
+[events.effects]
+energy_delta = -9
+stress_delta = 7
+rep_delta = 3
+money_delta = 150
+xp_delta = 9
+
+[[events]]
+id = "customer_persona_word_cloud"
+title = "Customer Persona Word Cloud"
+type = "workshop"
+weight = 2
+min_day = 1
+max_day = 9999
+min_stress = 0
+max_stress = 65
+department = "fulfillment.middle.product"
+tags = ["product", "workshop", "customer", "buzzwords"]
+flavor = "The team builds a customer persona from sticky notes, vibes, and one alarming anecdote from Sales. You name the persona Morgan and move on."
+
+[events.effects]
+energy_delta = -6
+stress_delta = 3
+rep_delta = 2
+money_delta = 0
+xp_delta = 6
+
+[[events]]
+id = "last_minute_demo_promise"
+title = "Last-Minute Demo Promise"
+type = "client_pitch"
+weight = 2
+min_day = 3
+max_day = 9999
+min_stress = 20
+max_stress = 100
+department = "fulfillment.right.sales"
+tags = ["sales", "demo", "client", "risk"]
+flavor = "A demo has been promised around a feature best described as emotionally available. You pitch the roadmap with enough confidence to buy one more week."
+
+[events.effects]
+energy_delta = -15
+stress_delta = 15
+rep_delta = 2
+money_delta = 300
+xp_delta = 14

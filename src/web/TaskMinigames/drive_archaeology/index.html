@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Drive Archaeology</title>
+  <link rel="stylesheet" href="/minigames/_shared/minigame.css" />
+  <link rel="stylesheet" href="game.css" />
+</head>
+<body>
+  <div class="mg-stage">
+    <div class="mg-header">
+      <div>
+        <div class="mg-title">Drive Archaeology</div>
+        <div class="mg-subtitle">Find <code id="target_file">FY24_Q3_FINAL_v7_USE_THIS_ONE.xlsx</code>. It is in there. Somewhere.</div>
+      </div>
+      <div class="mg-subtitle" id="task_label">—</div>
+    </div>
+
+    <div class="mg-canvas">
+      <div id="explorer">
+        <div id="breadcrumbs">/ My Drive</div>
+        <ul id="folder_list">
+          <!-- Populated by game.js -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="mg-footer">
+      <div class="mg-progress"><span id="progress_bar"></span></div>
+      <button class="mg-btn secondary" id="btn_partial">Give up (partial)</button>
+      <button class="mg-btn" id="btn_success">Found it (success)</button>
+    </div>
+  </div>
+
+  <script src="/minigames/_shared/minigame.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

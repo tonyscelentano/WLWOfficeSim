@@ -1,0 +1,100 @@
+/* Task Minigame Wrapper Styles */
+
+.minigame-card {
+  max-width: 900px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.minigame-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--edge);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.minigame-header h2 { margin: 0; border: none; padding: 0; }
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.minigame-content {
+  flex: 1;
+  background: #010409;
+  border-radius: 8px;
+  border: 1px solid var(--edge);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Built-in Minigame Components (e.g., Mad Libs) */
+.madlibs-wrapper {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.madlibs-instructions {
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 1.5;
+  background: rgba(210, 153, 34, 0.1);
+  border-left: 4px solid var(--warn);
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.madlibs-ide {
+  background: #0d1117;
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+.ide-header {
+  background: #161b22;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--edge);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ide-dot { width: 12px; height: 12px; border-radius: 50%; }
+.ide-dot.red { background: #ff5f56; }
+.ide-dot.yellow { background: #ffbd2e; }
+.ide-dot.green { background: #27c93f; }
+.ide-title { margin-left: 10px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); }
+
+.ide-body {
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #c9d1d9;
+}
+
+.ml-select, .ml-input {
+  background: #21262d;
+  color: #58a6ff;
+  border: 1px dashed var(--accent);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: bold;
+}

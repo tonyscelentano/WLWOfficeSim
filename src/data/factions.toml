@@ -1,0 +1,132 @@
+# OfficeSim Factions & Org Chart Topology
+# A Tree of Life structure: The Crown at the top, followed by 3 Pillars (Left, Middle, Right).
+
+# ==========================================
+# THE CROWN (Keter)
+# The ultimate authority. Above the pillars.
+# ==========================================
+[crown]
+name = "The Crown"
+description = "The apex of the organization. Holds the vision, the ultimate authority, and the final say."
+
+  [crown.clusters.leadership]
+  name = "Chief Executive"
+  roles = ["Chief Executive Officer (CEO)"]
+
+[pillars]
+
+  # ==========================================
+  # PILLAR 1: TECHNICAL (The Engine Room)
+  # Ideology: Logic, stability, and system integrity.
+  # ==========================================
+  [pillars.technical]
+  name = "Technical"
+  description = "The builders and maintainers. They value logic over optics."
+  
+    # --- Left Path: The User-Facing Builders ---
+    # Interacts most with Fulfillment (Design/Product). Values UX and speed.
+    [pillars.technical.paths.left.clusters.frontend]
+    name = "Frontend & UI Engineering"
+    roles = ["Junior UI Dev", "Frontend Engineer", "Senior Frontend", "Lead UX Engineer"]
+    
+    [pillars.technical.paths.left.clusters.mobile]
+    name = "Mobile Development"
+    roles = ["iOS Dev", "Android Dev", "Mobile Tech Lead"]
+
+    # --- Middle Path: The Core Systems ---
+    # The pure purists. Values architecture, patterns, and refactoring.
+    [pillars.technical.paths.middle.clusters.backend]
+    name = "Core Backend"
+    roles = ["Junior Backend Dev", "Backend Engineer", "Senior Backend", "Principal Engineer"]
+    
+    [pillars.technical.paths.middle.clusters.architecture]
+    name = "System Architecture"
+    roles = ["Solutions Architect", "Chief Architect"]
+
+    # --- Right Path: The Foundation & Data ---
+    # Interacts most with Finance (budget/ops). Values uptime, security, and scale.
+    [pillars.technical.paths.right.clusters.devops]
+    name = "DevOps & Infrastructure"
+    roles = ["DevOps Engineer", "Site Reliability Engineer (SRE)", "Head of Infrastructure"]
+    
+    [pillars.technical.paths.right.clusters.data]
+    name = "Data & Security"
+    roles = ["Data Analyst", "Data Engineer", "Security Ops Analyst", "CISO"]
+
+
+  # ==========================================
+  # PILLAR 2: FULFILLMENT (The Translators)
+  # Ideology: Empathy, optics, client satisfaction, and roadmap.
+  # ==========================================
+  [pillars.fulfillment]
+  name = "Fulfillment"
+  description = "Bridging the gap between what the client wants and what the engineers build."
+
+    # --- Left Path: The Creatives ---
+    # Interacts most with Technical (Frontend). Values aesthetics and user empathy.
+    [pillars.fulfillment.paths.left.clusters.design]
+    name = "Product Design"
+    roles = ["Junior Designer", "UI/UX Designer", "Senior Product Designer", "Creative Director"]
+    
+    [pillars.fulfillment.paths.left.clusters.copy]
+    name = "Content & Copy"
+    roles = ["Copywriter", "Content Strategist"]
+
+    # --- Middle Path: The Strategists ---
+    # The central hub. Values timelines, roadmaps, and prioritization.
+    [pillars.fulfillment.paths.middle.clusters.product]
+    name = "Product Management"
+    roles = ["Associate PM", "Product Manager", "Senior PM", "Director of Product"]
+    
+    [pillars.fulfillment.paths.middle.clusters.scrum]
+    name = "Agile Delivery"
+    roles = ["Scrum Master", "Delivery Manager"]
+
+    # --- Right Path: The Client-Facers ---
+    # Interacts most with Finance (Revenue). Values relationships, upselling, and appeasement.
+    [pillars.fulfillment.paths.right.clusters.csm]
+    name = "Client Success"
+    roles = ["Account Coordinator", "Customer Success Manager", "Key Account Director"]
+    
+    [pillars.fulfillment.paths.right.clusters.sales]
+    name = "Sales"
+    roles = ["Sales Development Rep", "Account Executive", "VP of Sales"]
+
+
+  # ==========================================
+  # PILLAR 3: FINANCE (The Overseers)
+  # Ideology: Rules, margins, compliance, and growth.
+  # ==========================================
+  [pillars.finance]
+  name = "Finance"
+  description = "The operators of the business machine. They value margins, process, and control."
+
+    # --- Left Path: The Human Element ---
+    # Interacts most with Fulfillment (hiring creatives/CSMs). Values culture and compliance.
+    [pillars.finance.paths.left.clusters.hr]
+    name = "Human Resources"
+    roles = ["HR Coordinator", "HR Business Partner", "Director of People"]
+    
+    [pillars.finance.paths.left.clusters.culture]
+    name = "Workplace Experience"
+    roles = ["Office Manager", "Culture & Events Lead"]
+
+    # --- Middle Path: The High Command ---
+    # The ultimate decision makers. Values overall company health and runway.
+    [pillars.finance.paths.middle.clusters.executive]
+    name = "C-Suite"
+    roles = ["Chief Strategy Officer", "Chief Operating Officer"] # CEO moved to the Crown
+    
+    [pillars.finance.paths.middle.clusters.board]
+    name = "The Board"
+    roles = ["Board Observer", "Board Member", "Chairman"]
+
+    # --- Right Path: The Number Crunchers ---
+    # Interacts most with Technical (Right Path - server costs). Values auditing and margin.
+    [pillars.finance.paths.right.clusters.accounting]
+    name = "Accounting & Payroll"
+    roles = ["Payroll Specialist", "Staff Accountant", "Controller"]
+    
+    [pillars.finance.paths.right.clusters.legal]
+    name = "Legal & Compliance"
+    roles = ["Compliance Analyst", "In-House Counsel", "General Counsel"]

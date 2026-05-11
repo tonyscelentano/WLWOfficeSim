@@ -1,0 +1,121 @@
+.sidebar-right {
+  grid-column: 3;
+  grid-row: 2;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: #010409;
+  position: relative;
+  /* Remove height/overflow here, let dashboard-container grid handle it */
+}
+
+/* Move scanlines to a lower z-index or use background */
+.sidebar-right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.2;
+}
+
+.log-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Force fill the sidebar */
+  overflow: hidden;
+}
+
+.log-header {
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--edge);
+  background: #161b22;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.terminal-view {
+  flex: 1;
+  height: 0; /* Critical: allow flexbox to calculate scrollable height */
+  padding: 1.25rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1;
+}
+
+/* Terminal Scrollbar */
+.terminal-view::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-view::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.2);
+}
+
+.terminal-view::-webkit-scrollbar-thumb {
+  background: var(--edge);
+  border-radius: 3px;
+}
+
+.terminal-view::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+.log-entry {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.03);
+  border-left: 2px solid transparent;
+  animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  box-shadow: var(--shadow-sm);
+}
+
+.log-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  opacity: 0.7;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.log-time { color: var(--text-muted); }
+.log-source { text-transform: uppercase; letter-spacing: 0.05em; }
+
+.log-entry.user {
+  border-left-color: var(--accent);
+  background: rgba(47, 129, 247, 0.05);
+}
+.log-entry.user .log-source { color: var(--accent); }
+
+.log-entry.system {
+  border-left-color: var(--edge-highlight);
+}
+.log-entry.system .log-source { color: var(--text-muted); }
+
+.log-entry.success-event {
+  border-left-color: var(--good);
+  background: rgba(63, 185, 80, 0.05);
+}
+.log-entry.success-event .log-source { color: var(--good); }
+
+.log-entry.fail-event {
+  border-left-color: var(--bad);
+  background: rgba(248, 81, 73, 0.05);
+}
+.log-entry.fail-event .log-source { color: var(--bad); }

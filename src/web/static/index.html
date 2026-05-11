@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OfficeSim Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/base.css" />
+  <link rel="stylesheet" href="/static/css/dashboard.css" />
+  <link rel="stylesheet" href="/static/css/profile.css" />
+  <link rel="stylesheet" href="/static/css/sidebar.css" />
+  <link rel="stylesheet" href="/static/css/stage.css" />
+  <link rel="stylesheet" href="/static/css/terminal.css" />
+  <link rel="stylesheet" href="/static/css/floating-menu.css" />
+  <link rel="stylesheet" href="/static/css/onboarding-packet.css" />
+  <link rel="stylesheet" href="/static/css/tutorial.css" />
+  <link rel="stylesheet" href="/static/css/deck-creator.css" />
+  <link rel="stylesheet" href="/static/css/overlays.css" />
+  <link rel="stylesheet" href="/static/css/minigames.css" />
+</head>
+<body>
+
+  <!-- Main Menu Overlay -->
+  <div id="menuPanel" class="overlay">
+    <div class="overlay-card menu-card">
+      <div class="menu-header">
+        <h1 class="logo-text">OfficeSim</h1>
+        <p class="muted">Agency Life Simulator</p>
+      </div>
+      
+      <div class="menu-actions">
+        <button id="newCareerBtn" class="primary large">Start New Career</button>
+      </div>
+
+      <div class="save-slots-container">
+        <h3 class="section-title">Resume Career</h3>
+        <ul id="saveSlotsList" class="roster-list">
+          <!-- Populated via JS -->
+          <p class="muted" style="text-align: center; padding: 20px;">Scanning for employee files...</p>
+        </ul>
+      </div>
+
+      <form id="nimKeyForm" class="nim-key-panel">
+        <label for="nimApiKey">Enter NVIDIA NIM API key</label>
+        <div class="nim-key-row">
+          <input
+            type="password"
+            id="nimApiKey"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="nvapi-..."
+          />
+          <button id="nimKeySaveBtn" type="submit" class="primary">Save</button>
+        </div>
+        <p class="nim-key-help">
+          Stored in this browser only. Get one at
+          <a href="https://build.nvidia.com/models" target="_blank" rel="noopener noreferrer">build.nvidia.com/models</a>.
+        </p>
+        <p id="nimKeyStatus" class="nim-key-status muted">NIM key not configured.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Application Overlay -->
+  <div id="applicationPanel" class="overlay hidden">
+    <div class="application-shell">
+      <form id="applicationForm" class="application-paper">
+        <div class="paper-header">
+          <span class="paper-kicker">OfficeSim Applicant File</span>
+          <h1>Candidate Intake</h1>
+          <p>Complete enough of this to let HR feel involved.</p>
+        </div>
+
+        <label class="paper-field">
+          <span>Name</span>
+          <input type="text" id="appName" autocomplete="name" maxlength="80" required />
+        </label>
+
+        <div class="paper-grid">
+          <label class="paper-field">
+            <span>Age</span>
+            <input type="text" id="appAge" inputmode="numeric" maxlength="20" />
+          </label>
+          <label class="paper-field">
+            <span>Preferred Office Destiny</span>
+            <input type="text" id="appPreferredRole" maxlength="120" placeholder="Product wizard, sales menace, backend monk..." />
+          </label>
+        </div>
+
+        <label class="paper-field">
+          <span>Work History, Approximately</span>
+          <textarea id="appWorkHistory" maxlength="500" rows="5" placeholder="Former intern. Spreadsheet survivor. Once led a meeting by accident."></textarea>
+        </label>
+
+        <div class="paper-footer">
+          <span class="paper-note">Filed under: probably employable</span>
+          <button id="applicationSubmitBtn" type="submit" class="paper-submit">Proceed to Interview</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Onboarding Overlay -->
+  <div id="onboardingPanel" class="overlay hidden">
+    <div class="overlay-card">
+      <h2>Final Interview</h2>
+      <div class="scene-view onboarding-scene-view">
+        <img id="onboardingScene" class="fade-transition" alt="Interview Scene" src="" />
+      </div>
+      <p id="question">Loading question...</p>
+      <div class="action-input-row">
+        <input type="text" id="answerInput" placeholder="Type your response..." autocomplete="off" />
+        <button id="answerBtn" class="primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minigame Overlay (Placeholder for future TaskMinigames) -->
+  <div id="minigamePanel" class="overlay hidden">
+    <div class="overlay-card minigame-card">
+      <div class="minigame-header">
+        <h2 id="minigameTitle">Active Task</h2>
+        <button id="closeMinigameBtn" class="danger icon-btn">✖</button>
+      </div>
+      <div id="minigameContainer" class="minigame-content">
+        <!-- Minigame HTML/Canvas injected here -->
+        <p class="muted">Minigame UI rendering...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 3.5: Onboarding Packet (The Hired Reveal) -->
+  <div id="onboardingPacketPanel" class="overlay hidden">
+    <div class="onboarding-packet-container">
+      <div class="packet-visual">
+        <img id="packetScene" src="/assets/scenes/1_NewGameInterview_Hired.jpeg" alt="Hired!" />
+        <div class="packet-stamp">APPROVED</div>
+      </div>
+      
+      <div class="application-paper interview-result-paper">
+        <div class="paper-header">
+          <p class="muted mono">OFFICESIM // INTERNAL MEMO #4492</p>
+          <h1>Orientation Briefing</h1>
+          <div class="paper-divider"></div>
+        </div>
+
+        <div class="paper-body">
+          <div class="paper-section">
+            <label>COMMITTEE ASSESSMENT</label>
+            <p id="resultFlavor" class="paper-flavor">Evaluation pending...</p>
+          </div>
+
+          <div class="paper-grid">
+            <div class="paper-section">
+              <label>ASSIGNED ROLE</label>
+              <p id="resultRole" class="paper-value">--</p>
+            </div>
+            <div class="paper-section">
+              <label>DEPARTMENT</label>
+              <p id="resultDept" class="paper-value">--</p>
+            </div>
+          </div>
+
+          <div class="paper-section">
+            <label>MANAGEMENT COMMENTARY</label>
+            <p class="paper-commentary">
+              "Candidate displays a tolerable ratio of ambition to existential dread. Provisioning of standard-issue cubicle and neural-link interface is authorized. Please ensure the liability waiver is filed in triplicate."
+            </p>
+          </div>
+        </div>
+
+        <div class="paper-footer">
+          <button id="beginCareerBtn" class="paper-submit">BEGIN CAREER</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Game Dashboard -->
+
+  <div id="gamePanel" class="dashboard-container hidden">
+    
+    <!-- Top Profile Bar -->    <div class="panel profile-header">
+      <div class="header-left">
+        <div class="profile-stats">
+          <div class="stat-badge">
+            <div class="stat-icon"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+            <div class="stat-content">
+              <span class="stat-label">Day</span>
+              <span class="stat-value" id="statDay">1</span>
+            </div>
+          </div>
+          <div class="stat-badge highlight">
+            <div class="stat-icon good"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+            <div class="stat-content">
+              <span class="stat-label">Funds</span>
+              <span class="stat-value good" id="statMoney">$0</span>
+            </div>
+          </div>
+          <div class="stat-badge highlight">
+            <div class="stat-icon accent"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg></div>
+            <div class="stat-content">
+              <span class="stat-label">Reputation</span>
+              <span class="stat-value accent" id="statRep">0</span>
+            </div>
+          </div>
+          <div class="stat-badge">
+            <div class="stat-icon"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+            <div class="stat-content">
+              <span class="stat-label">XP</span>
+              <span class="stat-value" id="statXp">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-avatar"></div>
+        <div class="profile-info">
+          <h1 id="playerName">Employee Name</h1>
+          <p id="playerDetails"><span id="playerTitle">Junior Dev</span> • <span id="playerDept">Dept</span></p>
+        </div>
+      </div>
+      
+      <div class="header-right">
+
+        <button id="logoutBtn" class="danger icon-btn" title="Exit Game">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Exit</span>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- Left Sidebar: Vitals, Skills, Network -->
+    <div class="sidebar-left">
+      <div class="panel scrollable-panel">
+        <h3 class="section-title">Vitals</h3>
+        <div class="vital-bar-container">
+          <div class="vital-header">
+            <span>Energy</span>
+            <span id="valEnergy" class="mono">100 / 100</span>
+          </div>
+          <div class="progress-track">
+            <div id="barEnergy" class="progress-fill fill-energy" style="width: 100%;"></div>
+          </div>
+        </div>
+
+        <div class="vital-bar-container">
+          <div class="vital-header">
+            <span>Stress</span>
+            <span id="valStress" class="mono">0 / 100</span>
+          </div>
+          <div class="progress-track">
+            <div id="barStress" class="progress-fill fill-stress" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <h3 class="section-title">Skills</h3>
+        <ul class="skills-list" id="skillsList">
+          <!-- Populated via JS -->
+        </ul>
+
+        <h3 class="section-title">Network</h3>
+        <ul class="roster-list" id="rosterList">
+          <!-- Populated via JS (Dummy placeholders for now) -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Center: Visuals & Actions -->
+    <div class="main-stage">
+      <div class="panel scene-panel">
+        <div class="scene-view">
+          <img id="scene" class="fade-transition" alt="Current Location" src="" />
+        </div>
+
+
+        <div class="action-controls">
+          <div class="action-input-row">
+            <span class="prompt-prefix">$&gt;</span>
+            <input type="text" id="actionInput" placeholder="Type /help for commands or describe an action..." autocomplete="off" />
+
+          </div>
+          <div class="button-group">
+            <button id="debugMenuBtn" class="icon-btn" title="Debug Minigames">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </button>
+            <button id="workBtn" class="primary"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>Work</button>
+
+
+            <button data-verb="socialize" class="warning"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Socialize</button>
+            <button data-verb="learn"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>Learn</button>
+            <button data-verb="recover" class="success"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 2v10m0 0l4-4m-4 4l-4-4"></path><path d="M20.35 14.35A9 9 0 0 1 7 12"></path></svg>Recover</button>
+            <button data-verb="slack" class="danger"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>Slack Off</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar: Terminal Log -->
+    <div class="sidebar-right">
+      <div class="panel log-panel">
+        <h3 class="section-title">Terminal Log</h3>
+        <div id="terminalLog" class="terminal-view">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Work Menu -->
+    <div id="workMenu" class="floating-menu hidden">
+      <div class="menu-header">
+        <span>ASSIGNMENT_TASK_ROUTER</span>
+        <button class="close-menu">×</button>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item" data-work-action="meeting">
+          <span class="menu-icon">🏢</span> Attend Meeting
+        </div>
+        <div class="menu-item" data-work-action="it">
+          <span class="menu-icon">🖥️</span> Visit IT
+        </div>
+        <div class="menu-item" data-work-action="pitch_new">
+          <span class="menu-icon">📊</span> Pitch Deck (Create)
+        </div>
+        <div class="menu-item" data-work-action="pitch_existing">
+          <span class="menu-icon">📽️</span> Pitch Deck (Present)
+        </div>
+        <div class="menu-item" data-work-action="server_room">
+          <span class="menu-icon">🔥</span> Server Room
+        </div>
+      </div>
+    </div>
+
+    <!-- Deck Creator Panel -->
+    <div id="deckCreatorPanel" class="panel floating-panel hidden">
+      <div class="panel-header">
+        <h3>DECK_DESIGNER_3000</h3>
+        <button class="close-panel">×</button>
+      </div>
+      <div class="deck-form">
+        <div class="form-row">
+          <label>PROJECT_CO_NAME</label>
+          <input type="text" id="deckCompany" placeholder="e.g. SynergyX">
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label>ACTION_VERB</label>
+            <input type="text" id="deckVerb" placeholder="e.g. Disrupt">
+          </div>
+          <div class="form-row">
+            <label>TARGET_NOUN</label>
+            <input type="text" id="deckNoun" placeholder="e.g. Cloud">
+          </div>
+        </div>
+        <div class="form-row">
+          <label>SYNERGY_ADJECTIVE / STATEMENT</label>
+          <textarea id="deckAdj" placeholder="e.g. They're useless anyways. Disruptive AI-first approach." rows="3"></textarea>
+        </div>
+
+        <div class="form-row">
+          <label>VISUAL_THEME</label>
+          <select id="deckTheme"></select>
+        </div>
+        <div class="form-row">
+          <label>TYPOGRAPHY_VIBE</label>
+          <select id="deckFont"></select>
+        </div>
+        <div class="form-footer">
+          <button id="deckCancel" class="danger">Discard Brain-Rot</button>
+          <button id="deckSubmit" class="primary">Export Synergy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deck Picker Panel -->
+    <div id="deckPickerPanel" class="panel floating-panel hidden">
+      <div class="panel-header">
+        <h3>SELECT_ASSET_TO_PITCH</h3>
+        <button class="close-panel">×</button>
+      </div>
+      <div id="deckPickerList" class="menu-items picker-list">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+
+    <!-- Floating Minigame Menu -->
+
+
+
+    <div id="minigameMenu" class="floating-menu hidden">
+      <div class="menu-header">
+        <span>DEBUG KERNEL</span>
+        <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      </div>
+      <div class="menu-items">
+        <button class="menu-item" data-game="tetris">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+          <span>Tetris (Backlog)</span>
+        </button>
+        <button class="menu-item" data-game="email_triage">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Email Triage</span>
+        </button>
+        <button class="menu-item" data-game="meeting_dodge">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>Meeting Dodge</span>
+        </button>
+        <button class="menu-item" data-game="node_untangle">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <span>Node Untangle</span>
+        </button>
+        <button class="menu-item" data-game="drive_archaeology">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          <span>Drive Archaeology</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/minigames/tech_madlibs.js"></script>
+  <!-- UI Tutorial System -->
+  <div id="tutorialOverlay" class="tutorial-overlay hidden">
+    <div id="tutorialCard" class="tutorial-card">
+      <div class="tutorial-content">
+        <p id="tutorialText">Welcome to OfficeSim.</p>
+      </div>
+      <div class="tutorial-footer">
+        <span id="tutorialStepCount" class="tutorial-step-count">1 / 5</span>
+        <button id="tutorialNextBtn" class="tutorial-btn">
+
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="3" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+      <div class="tutorial-arrow"></div>
+    </div>
+  </div>
+
+  <!-- ES Module Entry Point -->
+  <script type="module" src="/static/main.js"></script>
+</body>
+</html>

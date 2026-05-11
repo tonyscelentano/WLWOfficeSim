@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Node Untangle</title>
+  <link rel="stylesheet" href="/minigames/_shared/minigame.css" />
+  <link rel="stylesheet" href="game.css" />
+</head>
+<body>
+  <div class="mg-stage">
+    <div class="mg-header">
+      <div>
+        <div class="mg-title">Node Untangle</div>
+        <div class="mg-subtitle">The automation graph is held together by hope. Drag nodes apart until no edges cross.</div>
+      </div>
+      <div class="mg-subtitle" id="task_label">—</div>
+    </div>
+
+    <div class="mg-canvas" id="canvas">
+      <div id="placeholder">
+        <p>Stub UI. Drag-to-untangle gameplay not yet implemented.</p>
+        <p class="mg-subtitle">Click <em>Submit</em> to fire a fake terminal score and verify the postMessage handshake.</p>
+      </div>
+    </div>
+
+    <div class="mg-footer">
+      <div class="mg-progress"><span id="progress_bar"></span></div>
+      <button class="mg-btn secondary" id="btn_partial">Submit (partial)</button>
+      <button class="mg-btn" id="btn_success">Submit (success)</button>
+    </div>
+  </div>
+
+  <script src="/minigames/_shared/minigame.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

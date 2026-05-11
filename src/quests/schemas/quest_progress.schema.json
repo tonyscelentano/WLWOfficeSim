@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "office-sim.quest-progress.v1",
+  "title": "OfficeSim Quest Progress",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["quest_id", "status", "stage", "flags", "counters", "variables", "version"],
+  "properties": {
+    "quest_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["locked", "available", "active", "completed", "failed"]
+    },
+    "stage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "flags": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" }
+    },
+    "counters": {
+      "type": "object",
+      "additionalProperties": { "type": "integer" }
+    },
+    "variables": {
+      "type": "object"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    }
+  }
+}

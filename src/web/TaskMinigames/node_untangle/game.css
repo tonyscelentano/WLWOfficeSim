@@ -1,0 +1,12 @@
+#placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  color: var(--mg-muted);
+}
+#placeholder p { margin: 6px 0; max-width: 520px; }

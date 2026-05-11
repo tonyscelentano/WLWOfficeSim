@@ -1,0 +1,617 @@
+[[npcs]]
+id = "alex_lead"
+name = "Alex"
+role = "Product Management"
+department = "products"
+reports_to = "vp_engineering"
+description = "A high-resolution avatar of corporate dread who dreams exclusively in gray."
+archetype = "chaotic_genius"
+pillar = "technical"
+path = "middle"
+cluster = "backend"
+ambition = 3
+base_trust = 20
+base_rivalry = 0
+influence_weight = 7
+influence_scope = [
+    "engineering",
+    "architecture",
+]
+communication_style = "technical_precision"
+social_currency = "technical_credibility"
+access_tags = [
+    "engineering",
+    "architecture",
+    "incident_response",
+]
+prompt_templates = [
+    "Alex drops a cryptic comment in Slack: '{blank}'. You respond with the minimum viable amount of dignity...",
+    "Alex reviews your PR. His only comment is '{blank}'. You explain it like a person who has lived through four deploys...",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-MiddleManagement.jpeg"
+watercooler_seed = "Alex is standing near the watercooler, visibly calculating the ROI of human interaction and finding it lacking."
+pfp = "Alex.png"
+
+[[npcs]]
+id = "nina_hr"
+name = "Nina"
+role = "The Institutional Memory"
+department = "hr"
+reports_to = "chief_operating_officer"
+description = "Has been with the firm since its founding; knows where the bodies (and the good pens) are buried."
+archetype = "mentor"
+pillar = "finance"
+path = "left"
+cluster = "hr"
+ambition = 4
+base_trust = 30
+base_rivalry = 0
+influence_weight = 6
+influence_scope = [
+    "hr",
+    "culture",
+    "managerial",
+]
+communication_style = "measured_compliance"
+social_currency = "policy_shelter"
+access_tags = [
+    "hr",
+    "wellness",
+    "people_ops",
+]
+prompt_templates = [
+    "Darren asks how '{blank}' is affecting the team. You answer honestly without accidentally writing your own case file...",
+    "Darren offers advice on handling '{blank}'. You decide how candid to be with a man who definitely documents everything...",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-HR.jpeg"
+watercooler_seed = "Nina is by the watercooler. She has seen six CEOs come and go, and knows exactly how many pens you have taken."
+pfp = "Nina.png"
+
+[[npcs]]
+id = "diane_gossip"
+name = "Diane"
+role = "The Gatekeeper"
+department = "admin"
+reports_to = "vp_revenue"
+description = "Grandmaster of the strategic eye-roll and keeper of the office 'social ledger'."
+archetype = "gossip"
+pillar = "fulfillment"
+path = "right"
+cluster = "sales"
+ambition = 8
+base_trust = 15
+base_rivalry = 10
+influence_weight = 7
+influence_scope = [
+    "revenue",
+    "client",
+    "executive",
+]
+communication_style = "charismatic_pressure"
+social_currency = "pipeline_heat"
+access_tags = [
+    "sales",
+    "client",
+    "gossip",
+]
+prompt_templates = [
+    "Nina says she may have promised '{blank}' to a client and wants your emotional support disguised as technical input...",
+    "Nina asks what she'd need to say to sell '{blank}' this quarter. You answer while protecting both truth and your blood pressure...",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-GossipGirls.jpeg"
+watercooler_seed = "Diane and her inner circle are exchanging meaningful glances. The social ledger is being updated."
+pfp = "Diane.png"
+
+
+[[npcs]]
+id = "root_devops_cat"
+name = "Root"
+role = "The System Ghost"
+department = "infrastructure"
+reports_to = "head_infrastructure"
+description = "A literal cat and infrastructure specialist who communicates only judging glares and meows."
+archetype = "chaotic_genius"
+pillar = "technical"
+path = "right"
+cluster = "devops"
+ambition = 5
+base_trust = 25
+base_rivalry = 0
+influence_weight = 7
+influence_scope = [
+    "infrastructure",
+    "engineering",
+    "incident_response",
+]
+communication_style = "incident_brevity"
+social_currency = "uptime_blessing"
+access_tags = [
+    "devops",
+    "incident_response",
+    "infrastructure",
+]
+prompt_templates = [
+    "Patch is staring past the watercooler and says '{blank}' like it came from the logs. You reply carefully...",
+    "Patch asks whether anyone touched '{blank}' before the dashboard changed colors. You answer with dignity if available...",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-DevOpsCat.jpeg"
+watercooler_seed = "Root is perched on the water jug, maintaining unblinking eye contact while emitting a low, judgmental purr."
+pfp = "Root.png"
+
+[[npcs]]
+id = "iris_it"
+name = "Iris"
+role = "The Wire-Wizard"
+department = "infrastructure"
+reports_to = "head_infrastructure"
+description = "A hardware-intensive specialist who thinks cable management is a myth."
+archetype = "operator"
+pillar = "technical"
+path = "right"
+cluster = "devops"
+ambition = 4
+base_trust = 30
+base_rivalry = 0
+influence_weight = 5
+influence_scope = [
+    "it",
+    "infrastructure",
+    "support",
+]
+communication_style = "support_ticket_clarity"
+social_currency = "it_air_cover"
+access_tags = [
+    "it",
+    "support",
+    "infrastructure",
+]
+prompt_templates = [
+    "Iris says '{blank}' with the tone of someone who has reset too many passwords today. You respond without making it worse...",
+    "Iris asks if '{blank}' is supposed to be happening. You answer as if the ticket might remember your name...",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-IT.jpeg"
+watercooler_seed = "Iris is attempting to unravel a cat5 cable while glaring at the water cooler's power supply."
+pfp = "Iris.png"
+
+[[npcs]]
+id = "robo_janitor"
+name = "CleanBot"
+role = "Robo-Janitor"
+department = "facilities"
+reports_to = "head_infrastructure"
+description = "A robo-janitor with a friendly voice."
+archetype = "operator"
+pillar = "fulfillment"
+path = "middle"
+cluster = "culture"
+ambition = 1
+base_trust = 50
+base_rivalry = 0
+influence_weight = 1
+influence_scope = [
+    "facilities",
+]
+communication_style = "cheerful_service"
+social_currency = "clean_floors"
+access_tags = [
+    "facilities",
+    "cleaning",
+]
+prompt_templates = [
+    "CleanBot approaches with a friendly hum, asking if '{blank}' needs sanitizing.",
+    "CleanBot pauses its sweeping routine to cheerfully inquire about '{blank}'.",
+]
+watercooler_scene = "Watercooler_Personnel_RoboJanitor.jpeg"
+watercooler_seed = "The Robo-Janitor hums cheerfully, scrubbing a mysterious stain near the water jug."
+pfp = "RoboJanitor.png"
+
+[[npcs]]
+id = "tom_finance"
+name = "Tom Lee"
+role = "Finance Accountant"
+department = "finance"
+reports_to = "vp_revenue"
+description = "A finance accountant from Singapore."
+archetype = "operator"
+pillar = "finance"
+path = "right"
+cluster = "accounting"
+ambition = 6
+base_trust = 40
+base_rivalry = 5
+influence_weight = 6
+influence_scope = [
+    "finance",
+    "budget",
+]
+communication_style = "precise_efficiency"
+social_currency = "expense_approval"
+access_tags = [
+    "finance",
+    "accounting",
+]
+prompt_templates = [
+    "Tom asks for the receipts regarding '{blank}'.",
+    "Tom points out a discrepancy in the budget for '{blank}'.",
+]
+watercooler_scene = "Watercooler_Personnel_Tom-Lee.jpeg"
+watercooler_seed = "Tom is reviewing a spreadsheet on his phone while waiting for his cup to fill."
+pfp = "TomLee.png"
+
+[[npcs]]
+id = "chen_ux"
+name = "Chen Wei"
+role = "UX Engineer"
+department = "engineering"
+reports_to = "director_product"
+description = "A UX engineer from Hong Kong."
+archetype = "visionary"
+pillar = "technical"
+path = "left"
+cluster = "frontend"
+ambition = 7
+base_trust = 35
+base_rivalry = 0
+influence_weight = 5
+influence_scope = [
+    "frontend",
+    "design",
+]
+communication_style = "user_empathy"
+social_currency = "smooth_interactions"
+access_tags = [
+    "engineering",
+    "ux",
+]
+prompt_templates = [
+    "Chen suggests improving the micro-interactions for '{blank}'.",
+    "Chen asks how the user is supposed to feel about '{blank}'.",
+]
+watercooler_scene = "Watercooler_Personnel_ChenWei.jpeg"
+watercooler_seed = "Chen Wei is staring at the water cooler's push-button mechanism with deep UX disgust."
+pfp = "ChenWei.jpg"
+
+[[npcs]]
+id = "pam_reception"
+name = "Pam Martinez"
+role = "Receptionist"
+department = "admin"
+reports_to = "chief_operating_officer"
+description = "A receptionist secretary."
+archetype = "gossip"
+pillar = "fulfillment"
+path = "middle"
+cluster = "culture"
+ambition = 4
+base_trust = 60
+base_rivalry = 0
+influence_weight = 4
+influence_scope = [
+    "admin",
+    "office_culture",
+]
+communication_style = "casual_practicality"
+social_currency = "visitor_access"
+access_tags = [
+    "admin",
+    "reception",
+]
+prompt_templates = [
+    "Pam mentions that someone is waiting in the lobby for '{blank}'.",
+    "Pam asks if you have seen the latest memo about '{blank}'.",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-PamMartinez.jpeg"
+watercooler_seed = "Pam is taking a quick break, but her eyes are still tracking everyone who walks by."
+pfp = "pamela.png"
+
+[[npcs]]
+id = "carlos_investor"
+name = "Carlos"
+role = "Product Investor"
+department = "executive"
+reports_to = "ceo"
+description = "A product investor with a shady past."
+archetype = "political"
+pillar = "finance"
+path = "right"
+cluster = "board"
+ambition = 9
+base_trust = 10
+base_rivalry = 20
+influence_weight = 9
+influence_scope = [
+    "executive",
+    "finance",
+]
+communication_style = "charismatic_pressure"
+social_currency = "funding_leverage"
+access_tags = [
+    "executive",
+    "investor",
+]
+prompt_templates = [
+    "Carlos asks about the ROI for '{blank}' with a smile that doesn't reach his eyes.",
+    "Carlos casually mentions that his associates are very interested in '{blank}'.",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-InvestorCarlos.jpeg"
+watercooler_seed = "Carlos is standing near the cooler, wearing a suit that costs more than your salary."
+pfp = "Carlos.png"
+
+[[npcs]]
+id = "hr_lady"
+name = "HR Lady"
+role = "HR Specialist"
+department = "hr"
+reports_to = "chief_operating_officer"
+description = "The same HR lady from HR scene assets."
+archetype = "mentor"
+pillar = "finance"
+path = "left"
+cluster = "hr"
+ambition = 5
+base_trust = 30
+base_rivalry = 0
+influence_weight = 7
+influence_scope = [
+    "hr",
+    "managerial",
+]
+communication_style = "measured_compliance"
+social_currency = "policy_shelter"
+access_tags = [
+    "hr",
+    "wellness",
+]
+prompt_templates = [
+    "The HR Lady hands you a pamphlet about '{blank}'.",
+    "The HR Lady asks you to sign a form acknowledging '{blank}'.",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-HRLady.jpeg"
+watercooler_seed = "The HR Lady is ensuring the water cups are compliant with current corporate wellness initiatives."
+pfp = "HRLady.png"
+
+[[npcs]]
+id = "matt_sales"
+name = "Matthew Jacobs"
+role = "Sales Manager"
+department = "sales"
+reports_to = "vp_revenue"
+description = "A product sales manager, executive suite."
+archetype = "political"
+pillar = "fulfillment"
+path = "right"
+cluster = "sales"
+ambition = 8
+base_trust = 20
+base_rivalry = 10
+influence_weight = 8
+influence_scope = [
+    "sales",
+    "executive",
+]
+communication_style = "business_outcomes"
+social_currency = "revenue_leverage"
+access_tags = [
+    "sales",
+    "executive",
+]
+prompt_templates = [
+    "Matthew wants to know how we can monetize '{blank}' by Q3.",
+    "Matthew pitches '{blank}' as the next big enterprise feature.",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-MatthewJacobs.jpeg"
+watercooler_seed = "Matthew is practicing his golf swing next to the watercooler while speaking loudly into a headset."
+pfp = "Matthew.png"
+
+[[npcs]]
+id = "tony_it"
+name = "Tony Salvatore"
+role = "Shadow IT"
+department = "infrastructure"
+reports_to = "head_infrastructure"
+description = "A shadow IT wizard and philosopher-trickster."
+archetype = "chaotic_genius"
+pillar = "technical"
+path = "right"
+cluster = "devops"
+ambition = 5
+base_trust = 40
+base_rivalry = 0
+influence_weight = 6
+influence_scope = [
+    "it",
+    "engineering",
+]
+communication_style = "systems_reasoning"
+social_currency = "bypass_protocols"
+access_tags = [
+    "it",
+    "infrastructure",
+    "security",
+]
+prompt_templates = [
+    "Tony offers you a pill-shaped USB drive to solve '{blank}'.",
+    "Tony explains the philosophical implications of '{blank}' while bypassing the firewall.",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-TonySalvatore.jpeg"
+watercooler_seed = "Tony is dismantling the watercooler's internal thermostat for 'philosophical reasons'."
+pfp = "TonySalvatore.png"
+
+[[npcs]]
+id = "timothy_intern"
+name = "Timothy Larps"
+role = "Hipster Intern"
+department = "admin"
+reports_to = "vp_revenue"
+description = "Smug hipster intern who handles coffee runs with an air of intellectual superiority."
+archetype = "operator"
+pillar = "fulfillment"
+path = "left"
+cluster = "culture"
+ambition = 2
+base_trust = 15
+base_rivalry = 5
+influence_weight = 1
+influence_scope = [
+    "admin",
+]
+communication_style = "measured_compliance"
+social_currency = "coffee_prioritization"
+access_tags = [
+    "admin",
+    "intern",
+]
+prompt_templates = [
+    "Timothy asks if you've heard of '{blank}', but he's pretty sure you wouldn't understand the nuance.",
+    "Timothy sighs while handing you a coffee, mentioning it's from a roaster specialized in '{blank}'.",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-TimothyLarps.jpeg"
+watercooler_seed = "Timothy is holding a reusable bamboo cup and looking at the watercooler like it's a piece of performance art."
+pfp = "TimothyLarps.png"
+
+[[npcs]]
+id = "hany_pm"
+name = "Hany"
+role = "Sales PM"
+department = "sales"
+reports_to = "vp_revenue"
+description = "An attractive and charismatic Sales Project Manager."
+archetype = "political"
+pillar = "fulfillment"
+path = "right"
+cluster = "sales"
+ambition = 7
+base_trust = 40
+base_rivalry = 0
+influence_weight = 7
+influence_scope = [
+    "sales",
+    "executive",
+]
+communication_style = "charismatic_pressure"
+social_currency = "pipeline_heat"
+access_tags = [
+    "sales",
+    "executive",
+]
+prompt_templates = [
+    "Hany asks if you can 'unblock' '{blank}' before her meeting with the VPs.",
+    "Hany gives you a direct look and asks how you're feeling about the '{blank}' timeline.",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-HanyDefault.jpeg"
+watercooler_seed = "Hany is leaning against the wall, checking her watch with a smile that says she knows you're going to help her."
+pfp = "Hany.png"
+
+[[npcs]]
+id = "keith_bro"
+name = "Keith Adams"
+role = "Alpha Brogrammer"
+department = "engineering"
+reports_to = "vp_engineering"
+description = "Alpha brogrammer obsessed with gym gains and clean code."
+archetype = "chaotic_genius"
+pillar = "technical"
+path = "middle"
+cluster = "backend"
+ambition = 8
+base_trust = 30
+base_rivalry = 10
+influence_weight = 7
+influence_scope = [
+    "engineering",
+]
+communication_style = "incident_brevity"
+social_currency = "technical_credibility"
+access_tags = [
+    "engineering",
+    "gym",
+]
+prompt_templates = [
+    "Keith asks how many plates you're hitting while discussing the performance of '{blank}'.",
+    "Keith says '{blank}' is 'weak weight' and suggests a refactor for maximum gains.",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-KeithAdams.jpeg"
+watercooler_seed = "Keith is doing single-arm pushups next to the watercooler while waiting for the filtration light to turn green."
+pfp = "Keith.png"
+
+[[npcs]]
+id = "investor_todd"
+name = "Todd B."
+role = "Angel Investor"
+department = "executive"
+reports_to = "ceo"
+description = "Loves skunkworks projects and deep engineering lore. Always looking for the next 'billion-dollar pivot'."
+archetype = "visionary"
+pillar = "finance"
+path = "right"
+cluster = "board"
+ambition = 9
+base_trust = 20
+base_rivalry = 5
+influence_weight = 8
+influence_scope = ["executive", "finance"]
+communication_style = "charismatic_pressure"
+social_currency = "funding_leverage"
+access_tags = ["executive", "investor", "skunkworks"]
+prompt_templates = [
+    "Todd B. pulls you aside and whispers: '{blank}'. He's looking for a reason to write a check.",
+    "Todd asks if you've considered applying '{blank}' to the blockchain. You answer while maintaining eye contact...",
+]
+watercooler_scene = "Watercooler_Personnel_Generic-Investor-Todd.jpeg"
+watercooler_seed = "Todd B. is leaning against the watercooler, looking at a napkin with a complicated diagram labeled 'The Singularity'."
+pfp = "Todd.png"
+
+[[npcs]]
+id = "coffee_joe"
+name = "Coffee Joe"
+role = "Parking Lot Vendor"
+department = "facilities"
+reports_to = "none"
+description = "A grumpy parking lot coffee vendor who trades in company gossip and overpriced caffeine."
+archetype = "gossip"
+pillar = "fulfillment"
+path = "middle"
+cluster = "culture"
+ambition = 2
+base_trust = 10
+base_rivalry = 0
+influence_weight = 3
+influence_scope = ["gossip", "admin"]
+communication_style = "casual_practicality"
+social_currency = "office_temperature"
+access_tags = ["gossip", "parking_lot"]
+prompt_templates = [
+    "Coffee Joe grunts and hands you a cup: 'Heard they're planning {blank} on the 4th floor. What's your take?'",
+    "Joe asks if you've seen the black SUVs in the lot. 'Probably here for {blank},' he mutters.",
+]
+watercooler_scene = "SmokingArea_CoffeeJoe.jpeg"
+watercooler_seed = "Coffee Joe is leaning against his cart, staring at the office building with profound suspicion."
+pfp = "CoffeeJoe.png"
+
+[[npcs]]
+id = "jason_it"
+name = "Jason"
+role = "IT Support / Tech Purist"
+pfp = "Jason-Basement_IT.png"
+department = "infrastructure"
+reports_to = "head_infrastructure"
+archetype = "operator"
+pillar = "technical"
+path = "right"
+cluster = "devops"
+ambition = 2
+base_trust = 20
+base_rivalry = 0
+influence_weight = 4
+influence_scope = ["it", "support"]
+communication_style = "support_ticket_clarity"
+social_currency = "it_air_cover"
+access_tags = ["it", "support"]
+watercooler_scene = "IT-Basement_Bored-Technician.jpeg"
+watercooler_seed = "Jason is staring blankly at a MS-DOS prompt, his fingers hovering over a mechanical keyboard with religious intensity."
+watercooler_pool = false  # IT basement only; accessed via visit_it, not random watercooler
+prompt_templates = [
+    "Jason squints at the 386 casing and mutters, 'You know, modern web frameworks are just bloatware on top of bloatware.'",
+    "Jason doesn't look up from his MS-DOS prompt: 'If it doesn't run in 640K, it's not real software.'",
+    "Jason sighs deeply while soldering something: 'Another ticket? Let me guess, you forgot your password again?'"
+]

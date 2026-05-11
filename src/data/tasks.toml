@@ -1,0 +1,36 @@
+# OfficeSim Task Schema (MVP)
+# These are TEMPLATES, not instances.
+# Runtime instances (with mutable days_remaining, outcome, etc.) live in state.py.
+#
+# fallback_dc:      used ONLY when LLM is unavailable — player skill vs this int
+# prompt_template:  Mad Libs blank for LLM-as-GM evaluation
+# evaluation_hint:  injected into LLM system prompt to guide outcome judgment
+# task_type:        "internal" | "client" — queryable by career system, not inferred from money
+
+[[tasks]]
+id = "fix_deploy_script"
+title = "Fix Flaky Deploy Script"
+task_type = "internal"
+energy_cost = 20
+deadline_days = 2
+reward_rep = 10
+reward_money = 0
+risk_stress = 15
+required_skill = "engineering"
+fallback_dc = 3
+prompt_template = "The deploy pipeline is failing at the Docker build step. You reach for {blank} and tell the team..."
+evaluation_hint = "Good answers involve debugging tools, logs, or systematic isolation, but should still sound like a person in a mildly cursed office. Buzzword soup or vague delegation should fail hilariously."
+
+[[tasks]]
+id = "client_demo_prep"
+title = "Prep Client Demo"
+task_type = "client"
+energy_cost = 30
+deadline_days = 1
+reward_rep = 25
+reward_money = 500
+risk_stress = 25
+required_skill = "communication"
+fallback_dc = 4
+prompt_template = "The client wants a live demo in 20 minutes and staging is down. You {blank} and somehow..."
+evaluation_hint = "Good answers show calm, creativity, or decisive triage with a dry workplace-comedy edge. Panicking, blaming infra, or explaining microservice architecture to a VP of Sales should fail spectacularly."

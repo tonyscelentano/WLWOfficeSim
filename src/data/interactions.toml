@@ -1,0 +1,84 @@
+# OfficeSim Interaction Schema
+# Archetype-keyed templates are the fallback for all NPCs of that archetype.
+# Per-NPC overrides in npcs.toml → prompt_templates take precedence when present.
+#
+# outcome_hints: injected into the LLM evaluator alongside the NPC's communication_style.
+# Tiers: dumpster_fire | partial | success | legendary
+
+[[archetypes]]
+id = "chaotic_genius"
+outcome_hints = """
+Legendary: Player matches technical depth AND notices the hidden edge case. They walk away impressed and slightly less tired.
+Success: Player is technically competent and keeps the conversation crisp.
+Partial: Player is vague, uses process-speak, or tries to schedule a meeting about the meeting.
+Dumpster fire: Player frames a systems problem in ROI terms, suggests a Jira ticket as a philosophy, or says 'synergy' unironically.
+"""
+templates = [
+  "They are staring at a dashboard and muttering about a performance bottleneck. You walk up as they start describing the fix...",
+  "They send you a code review with exactly one comment that seems more like a philosophical riddle than a bug report. You reply...",
+]
+
+[[archetypes]]
+id = "political"
+outcome_hints = """
+Legendary: Player speaks in outcomes, anticipates stakeholder concerns, and gives them something quotable upward.
+Success: Player is clear, non-technical, and respects the relationship layer.
+Partial: Player is competent but too technical, too literal, or mildly allergic to the agenda.
+Dumpster fire: Player explains a distributed systems architecture, deploys an acronym without definition, or visibly checks their watch while saying "let's circle back."
+"""
+templates = [
+  "They schedule a 'quick alignment call' that has no agenda but feels suspiciously important. You navigate the silence...",
+  "They forward you an email from the VP with no body text, only a complex attachment. You reply with a status update...",
+]
+
+[[archetypes]]
+id = "operator"
+outcome_hints = """
+Legendary: Player is organized, reliable, and solves the hidden process snag before it spreads.
+Success: Player is respectful, clear, and makes the practical next step obvious.
+Partial: Player is well-meaning but underestimates how much logistics actually matters.
+Dumpster fire: Player improvises on top of a fragile process, adds chaos to a calendar problem, or says "someone should own this" to the person already owning it.
+"""
+templates = [
+  "They are cross-referencing three different checklists and look like they're about to find a discrepancy. You step in...",
+  "They ask for a concrete status on the latest project delivery. You respond without creating more work for yourself...",
+]
+
+[[archetypes]]
+id = "visionary"
+outcome_hints = """
+Legendary: Player translates a big, messy idea into something ambitious and grounded enough to rally people.
+Success: Player engages the larger strategy without sounding cynical or lost.
+Partial: Player gets the concept but drifts into implementation weeds too early.
+Dumpster fire: Player answers a strategic question with tactical trivia, budget panic, or a rant about tooling.
+"""
+templates = [
+  "They are pitching a suspiciously grand idea to a very confused intern. You walk into the middle of the 'vision'...",
+  "They ask how the current sprint fits into the 'ten-year story' of the company. You answer like you've read the script...",
+]
+
+[[archetypes]]
+id = "gossip"
+outcome_hints = """
+Legendary: Player extracts useful social intelligence without sounding thirsty, cruel, or obvious.
+Success: Player keeps the conversation lively and learns something real.
+Partial: Player gets dragged into harmless chatter but learns little of value.
+Dumpster fire: Player overshares, mishandles a rumor, or treats gossip like sworn testimony.
+"""
+templates = [
+  "They lower their voice and mention they heard something interesting about the upcoming reorg. You respond carefully...",
+  "They ask if you've noticed the 'strange energy' in the breakroom lately. You answer without being quoted...",
+]
+
+[[archetypes]]
+id = "mentor"
+outcome_hints = """
+Legendary: Player shows curiosity, humility, and enough competence to earn meaningful guidance.
+Success: Player asks smart questions and leaves with something actionable.
+Partial: Player is earnest but vague, so the advice stays generic.
+Dumpster fire: Player asks for mentorship while radiating zero preparation, zero context, or both.
+"""
+templates = [
+  "They offer ten minutes to help you think through a complex problem. You try to make the most of the professional oxygen...",
+  "They ask what you're actually trying to get better at this quarter. You answer honestly and specifically...",
+]

@@ -1,0 +1,25 @@
+Storage of unused assets. This document explains their intended placement:
+
+## 'Tech Conference' keynote scenes (Not Yet Implemented: 'Attend Keynote' action)
+TechConference_Keynote1.jpeg
+TechConference_Keynote2.jpeg
+TechConference_Keynote3.jpeg
+TechConference_Vendors.jpeg
+
+## CTO meeting scenes (Not Yet Implemented: Shawn as NPC, reason for meeting / being called to Shawn's office)
+CTO-Shawn-Office.jpeg | Meeting Shawn in his office.
+CTO-Shawn-ServerLab.jpeg | Meeting Shawn in the server lab.
+
+## Attend Meeting scenes
+WebcamConference_Coworkers.jpeg | A remote teleconference. Can be added as a random "Attend Meeting" outcome scene.
+
+## Senior Management Office
+SeniorManagement-Office-Generic1.jpeg | A generic Senior Manager behind a desk
+
+## Client Outcomes for Sales Team Jobs (Not Yet Implemented: Mechanic for sales team jobs)
+User_Workdesk_ClientOutcome-Bad.jpeg
+User_Workdesk_ClientOutcome-Good.jpeg
+
+## Slacking Off / Generic User Desk Scenes (Because 'Slack Off' button pulls up a random game, it's best these are used as post-game or post-slack off transitions)
+SlackingOff_PolyesterSuitPaulie.jpeg
+User_Workdesk_Generic_InboxSpam.jpeg
